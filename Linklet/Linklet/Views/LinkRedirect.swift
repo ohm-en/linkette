@@ -122,18 +122,19 @@ struct LinkRedirectWizard: View {
                 Spacer()
                 Form {
                     Picker("Browser", selection: $vm.selectedBrowser) {
-                        ForEach($browserService.browsers, id: \.self) {
-                            browser in
-                            Text(browser.wrappedValue.name).tag(
-                                browser.wrappedValue.id
-                            )
+                        ForEach($browserService.browsers, id: \.self) { browser in
+                            Label {
+                                Text(browser.wrappedValue.name)
+                            } icon: {
+                                Image(nsImage: browser.icon.wrappedValue.sized(20))
+                            }
+                            .tag(browser.wrappedValue.id)
                         }
                     }
                     .pickerStyle(.menu)
 
                     Picker("Profile", selection: $vm.selectedProfile) {
-                        ForEach($vm.selectedBrowser.profiles, id: \.self) {
-                            profile in
+                        ForEach($vm.selectedBrowser.profiles, id: \.self) { profile in
                             Text(profile.wrappedValue.name).tag(
                                 profile.wrappedValue.id
                             )

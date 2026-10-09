@@ -20,14 +20,7 @@ class BrowserService {
     init(browserConfigs: [BrowserConfig]) {
         self.browserConfigs = browserConfigs
         
-        self.browsers = browserConfigs.compactMap { config in
-            if isAppInstalled(bundleID: config.id) {
-                print("Found \(config.id)")
-                return config.makeBrowserInstance()
-            }
-            
-            return nil
-        }
+        self.browsers = browserConfigs.compactMap({ $0.makeBrowserInstance() })
     }
     
     // TODO: timer based or keep external?

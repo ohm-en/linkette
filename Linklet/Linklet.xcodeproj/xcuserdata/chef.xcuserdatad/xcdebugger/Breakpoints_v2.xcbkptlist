@@ -146,36 +146,6 @@
             endingLineNumber = "159"
             landmarkName = "removePendingWizard(wizard:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "74845C7B-7CDF-4303-93D1-727F43B7D717 - a72506d248d95a88"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Linklet.RedirectManager.intake(url: Foundation.URL) -&gt; ()"
-                  moduleName = "Linklet.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chef/Knowledgebase/Projects/Linklet/Linklet/Linklet/Managers/RedirectManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160">
-               </Location>
-               <Location
-                  uuid = "74845C7B-7CDF-4303-93D1-727F43B7D717 - 53adffc25d460372"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Linklet.RedirectManager.removePendingWizard(wizard: Linklet.RedirectWizardManager) -&gt; Swift.Bool"
-                  moduleName = "Linklet.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chef/Knowledgebase/Projects/Linklet/Linklet/Linklet/Managers/RedirectManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

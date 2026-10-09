@@ -19,7 +19,6 @@ struct BrowserProfile: Identifiable, Hashable {
     }
 }
 
-
 protocol Browser: Hashable {
     func getProfile(with: String) -> BrowserProfile?
     func getDefaultProfile() -> BrowserProfile?
@@ -36,16 +35,27 @@ class BaseBrowser: Browser {
         hasher.combine(id)
     }
 
-    var id: String
+    var id: String // bundleId
+    var bundleUrl: URL
     var name: String // displayed
     var dataDirectory: String
     var profiles: [BrowserProfile]
+    var icon: NSImage
     
-    init(id: String, name: String, dataDirectory: String, profiles: [BrowserProfile]) {
+    init(id: String, bundleUrl: URL, name: String, dataDirectory: String, profiles: [BrowserProfile]) {
         self.id = id
+        self.bundleUrl = bundleUrl
         self.name = name
         self.dataDirectory = dataDirectory
         self.profiles = profiles
+        self.icon = NSWorkspace.shared.icon(forFile: bundleUrl.path)
+    }
+    
+    convenience init?(id: String, name: String, dataDirectory: String, profiles: [BrowserProfile]) {
+        guard let bundleUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: id) else {
+            return nil // app isn't installed
+        }
+        self.init(id: id, bundleUrl: bundleUrl, name: name, dataDirectory: dataDirectory, profiles: profiles)
     }
     
     func launch(profile: BrowserProfile, url: URL) { // TODO: add return
@@ -76,7 +86,7 @@ struct BrowserConfig: Identifiable, Hashable {
         case chromium, firefox, webkit
     }
     
-    func makeBrowserInstance() -> BaseBrowser {
+    func makeBrowserInstance() -> BaseBrowser? {
         switch type {
         case .chromium:
             return ChromiumBrowser(id: id, name: name, dataDirectory: dataDirectory, profiles: [])

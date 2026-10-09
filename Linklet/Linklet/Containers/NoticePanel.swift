@@ -46,7 +46,7 @@ final class NoticePanel: NSPanel {
     override var canBecomeKey: Bool { true }
     override var canBecomeMain: Bool { false }
 
-    init<Content: View>(@ViewBuilder view: () -> Content) {
+    init<Content: View>(onClose: @escaping () -> Void, @ViewBuilder view: () -> Content) {
         super.init(
             contentRect: .zero,
             styleMask: [.borderless, .nonactivatingPanel],
@@ -63,9 +63,12 @@ final class NoticePanel: NSPanel {
         isOpaque = false
         backgroundColor = .clear
         hasShadow = true
-
+        
         let root = NoticeContainer( // allows custom close button
-            onClose: { [weak self] in self?.orderOut(nil) },
+            onClose: { [weak self] in
+                self?.orderOut(nil)
+                onClose()
+            },
             content: view()
         )
         

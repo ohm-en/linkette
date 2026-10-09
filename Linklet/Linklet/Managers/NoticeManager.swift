@@ -41,7 +41,7 @@ final class NoticeManager {
     }
 
     private func makePanel() -> NoticePanel {
-        NoticePanel {
+        NoticePanel(onClose: vc.cancel) {
             LinkRedirectWindow(vm: vc)
                 .fixedSize()
                 .padding(25)

@@ -179,7 +179,6 @@ struct LinkRedirectWindow: View {
     var body: some View {
         if let wizardVm = vm.currentRedirectWizard {
             LinkRedirectWizard(vm: wizardVm)
-//            EmptyView()
         } else {
             noLinksToRedirect
         }

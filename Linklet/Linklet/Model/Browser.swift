@@ -22,6 +22,7 @@ struct BrowserProfile: Identifiable, Hashable {
 
 protocol Browser: Hashable {
     func getProfile(with: String) -> BrowserProfile?
+    func getDefaultProfile() -> BrowserProfile?
     func retrieveProfiles() -> Result<[BrowserProfile], BrowserError>
 }
 
@@ -53,6 +54,10 @@ class BaseBrowser: Browser {
 
     func getProfile(with name: String) -> BrowserProfile? {
         return profiles.first(where: { $0.id == name })
+    }
+    
+    func getDefaultProfile() -> BrowserProfile? { // TODO: if no profile enforce guest?
+        return profiles.first
     }
     
     func retrieveProfiles() -> Result<[BrowserProfile], BrowserError> {

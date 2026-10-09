@@ -6,4 +6,6 @@
 //
 
 let BraveBrowser: BrowserConfig = .init(id: "com.brave.Browser", name: "Brave", dataDirectory: "~/Library/Application Support/BraveSoftware/Brave-Browser", type: .chromium)
-let SupportedBrowserConfigs: [BrowserConfig] = [BraveBrowser]
+let ChromeBrowser: BrowserConfig = .init(id: "com.google.Chrome", name: "Chrome", dataDirectory: "~/Library/Application Support/Google/Chrome/", type: .chromium)
+
+let SupportedBrowserConfigs: [BrowserConfig] = [BraveBrowser,ChromeBrowser]

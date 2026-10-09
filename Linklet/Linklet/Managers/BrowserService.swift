@@ -46,9 +46,11 @@ class BrowserService {
     }
     
     func getDefaultProfile() -> BrowserProfile? {
+        #if DEBUG
         if let person = browsers.first?.profiles.first(where: { $0.name == "Profile 1" }) {
             return person // TOOD: TEMP for testing. Just sets the default b rowser to one of mine
         }
+        #endif
         return browsers.first?.profiles.first
     }
     

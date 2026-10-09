@@ -26,7 +26,15 @@ class RedirectWizardManager: Hashable {
     var title: String = ""
     var favicon: CGImage? = nil
     
-    var selectedBrowser: BaseBrowser
+    var selectedBrowser: BaseBrowser {
+        didSet {
+            if let newProfile = selectedBrowser.getDefaultProfile() {
+                selectedProfile = newProfile
+            } else {
+                selectedBrowser = oldValue // browser without any profiles shouldn't be listed anyways
+            }
+        }
+    }
     var selectedProfile: BrowserProfile
     var matchchoice: DomainCard
     

@@ -14,9 +14,9 @@ struct MenuBarContent: View {
         #else
         Text("Linkette")
         #endif
-        SettingsLink {
-            Label("Settings", systemImage: "gearshape")
-        }
+//        SettingsLink {
+//            Label("Settings", systemImage: "gearshape")
+//        }
         Button("Quit") {
             NSApplication.shared.terminate(nil)
         }
